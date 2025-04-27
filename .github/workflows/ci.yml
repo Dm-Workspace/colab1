@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install pytest requests pytest-html selenium
+
+      - name: Run API tests
+        run: |
+          pytest --maxfail=1 --disable-warnings -q
+
+      - name: Run UI tests placeholder
+        run: |
+          echo "Здесь будут UI-тесты"
