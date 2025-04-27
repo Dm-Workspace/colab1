@@ -7,8 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
-            steps:
+    steps:
       - uses: actions/checkout@v3
 
       - name: Set up Python
@@ -31,6 +30,3 @@ jobs:
       - name: Run UI tests
         run: |
           pytest test_ui.py -q
-
-
-
