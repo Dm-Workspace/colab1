@@ -16,14 +16,19 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+            - name: Install dependencies
         run: |
-          pip install pytest requests pytest-html selenium
+          pip install pytest requests pytest-html playwright
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install
 
       - name: Run API tests
         run: |
           pytest --maxfail=1 --disable-warnings -q
 
-      - name: Run UI tests placeholder
+      - name: Run UI tests
         run: |
-          echo "Здесь будут UI-тесты"
+          pytest test_ui.py -q
+
